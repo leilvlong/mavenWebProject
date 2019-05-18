@@ -1,4 +1,4 @@
-package com.travel.web.handerl;
+package com.travel.web.handler;
 
 import com.travel.constant.Constant;
 import com.travel.domain.ResultInfo;
@@ -15,6 +15,7 @@ CategoryService 委托承接对象:
     突然想到动态代理AOP 于是决定对分类信息这块采用该处理方式
     实际使用是可行的,由service返回已经设置过data的ResultInfo
     然后由该承接委托对象处理可能出现的service异常
+    对dao层可能出现的数据持久化问题也可以使用该方式做处理
     其他的业务功能模块懒得改了(写这个servlet只是为了体验原生的三层架构)
  */
 
