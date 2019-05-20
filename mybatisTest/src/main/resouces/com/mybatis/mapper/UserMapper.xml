@@ -3,11 +3,40 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.UserMapper">
+    <!--
+    select查询起别名
+    <resultMap id="唯一标识" type="javaBean全限定名">
+        <id column="主键属性名" property="对应的javaBean属性名"></id>
+        <result column="数据库属性名" property="javaBean属性名"></result>
+    </resultMap>
 
+    查询使用时
+    <select id="查询方法" resultMap="定义的resultMaP的id"></select>
+    -->
+
+
+    <!--增加-->
+    <insert id="insertUser"  useGeneratedKeys="true" keyProperty="id" parameterType="com.mybatis.domain.User" >
+        insert into user values(#{id},#{username},#{password})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--改-->
+    <update id="updateUser" parameterType="com.mybatis.domain.User">
+        update user set username= #{username}, password = #{password} where id = #{id}
+    </update>
+
+
+    <!--查所有-->
     <select id="findAll" resultType="com.mybatis.domain.User">
         select * from user
     </select>
 
+    <!--两种模糊查询-->
     <!--<select id="likeAll" parameterType="string" resultType="com.mybatis.domain.User">
         select * from user where username like #{username}
     </select>-->
@@ -16,10 +45,15 @@
         select * from user where username like '%${value}%'
     </select>
 
+    <!--嵌套查询-->
+    <select id="findNestUser" parameterType="Content" resultType="com.mybatis.domain.User">
+        select * from user where id = #{user.id}
+    </select>
 
-    <insert id="insertUser"  useGeneratedKeys="true" keyProperty="id" parameterType="com.mybatis.domain.User" >
-        insert into user values(#{id},#{username},#{password})
-    </insert>
+
+
+
+
 
 
 
