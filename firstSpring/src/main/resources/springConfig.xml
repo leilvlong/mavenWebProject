@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:P="http://www.springframework.org/schema/p"
+       xmlns:C="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                          https://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context
+                          https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="userServcie" class="com.spring.service.impl.User" C:name="zhangsan" P:ud-ref="userDao" >
+        <property name="age" value="15">
+        </property>
+
+        <property name="uds">
+            <list>
+                <ref bean="userDao"/>
+                <ref bean="userDao"/>
+            </list>
+        </property>
+    </bean>-->
+
+
+
+    <bean id="dataSource"
+          class="com.spring.util.JdbcUtil"
+          factory-method="getDataSource"/>
+
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+        <constructor-arg ref="dataSource"></constructor-arg>
+    </bean>
+
+    <bean id="userDao" class="com.spring.dao.impl.UserDaoImpl" P:jt-ref="jdbcTemplate"></bean>
+
+    <bean id="userService" class="com.spring.service.impl.UserServiceImpl" P:ud-ref="userDao" ></bean>
+
+</beans>
