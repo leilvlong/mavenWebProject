@@ -3,10 +3,14 @@ package com.spring.service.impl;
 import com.spring.dao.UserDao;
 import com.spring.domain.User;
 import com.spring.service.UserService;
+import com.spring.util.TransactionUtil;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+
 public class UserServiceImpl implements UserService {
+
     private UserDao ud;
 
     public void setUd(UserDao ud) {
@@ -26,6 +30,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateByUid(Integer uid) {
 
+    }
+
+    @Override
+    public void updateByUser(User forUser, User toUser) {
+        forUser.setPassword("333333");
+        toUser.setPassword("555555");
+        ud.updateByUser(forUser);
+        //int i = 10 / 0;
+        ud.updateByUser(toUser);
     }
 
     @Override

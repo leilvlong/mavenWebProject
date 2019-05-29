@@ -11,6 +11,8 @@ public interface UserService {
 
     public void updateByUid(Integer uid);
 
+    public void updateByUser(User forUser, User toUser);
+
     public User findUidByUser(Integer uid);
 
     public List<User> finAllUser();

@@ -10,6 +10,7 @@ public interface UserDao {
     public void delByUidUser(Integer uid);
 
     public void updateByUid(Integer uid);
+    public void updateByUser(User User);
 
     public User findUidByUser(Integer uid);
 

@@ -4,10 +4,15 @@ import com.spring.dao.UserDao;
 import com.spring.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+
 public class UserDaoImpl implements UserDao {
+
+
     private JdbcTemplate jt;
 
     public void setJt(JdbcTemplate jt) {
@@ -28,6 +33,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateByUid(Integer uid) {
 
+    }
+
+    @Override
+    public void updateByUser(User user) {
+        String sql = "update user set password=? where id=?";
+        jt.update(sql,user.getPassword(),user.getId());
     }
 
     @Override

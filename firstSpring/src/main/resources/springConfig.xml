@@ -3,11 +3,13 @@
        xmlns:P="http://www.springframework.org/schema/p"
        xmlns:C="http://www.springframework.org/schema/c"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                           https://www.springframework.org/schema/beans/spring-beans.xsd
-                          http://www.springframework.org/schema/context
-                          https://www.springframework.org/schema/context/spring-context.xsd">
+                          http://www.springframework.org/schema/aop
+                          https://www.springframework.org/schema/aop/spring-aop.xsd
+                          ">
 
 <!--    <bean id="userServcie" class="com.spring.service.impl.User" C:name="zhangsan" P:ud-ref="userDao" >
         <property name="age" value="15">
@@ -22,18 +24,33 @@
     </bean>-->
 
 
+    <!--数据连接源-->
+    <bean id="dataSource" class="com.spring.util.JdbcUtil" factory-method="getDataSource"/>
 
-    <bean id="dataSource"
-          class="com.spring.util.JdbcUtil"
-          factory-method="getDataSource"/>
+    <!--事务控制对象设置数据源-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" C:dataSource-ref="dataSource"/>
 
+    <!--事务控制工具-->
+    <bean id="transactionUtil" class="com.spring.util.TransactionUtil" P:dtm-ref="dataSourceTransactionManager"></bean>
 
+    <!--JdbcTemplate连接-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
         <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
 
+    <!--Dao对象-->
     <bean id="userDao" class="com.spring.dao.impl.UserDaoImpl" P:jt-ref="jdbcTemplate"></bean>
 
+    <!--Service对象-->
     <bean id="userService" class="com.spring.service.impl.UserServiceImpl" P:ud-ref="userDao" ></bean>
 
+    <!--为service添加aop事务-->
+    <aop:config>
+        <aop:aspect id="ProxyUserService" ref="transactionUtil">
+            <aop:pointcut id="userServiceMethod" expression="execution(* com.spring.service.UserService.*(..))"/>
+            <aop:before pointcut-ref="userServiceMethod" method="startAffair"/>
+            <aop:after-returning pointcut-ref="userServiceMethod" method="commit"/>
+            <aop:after-throwing pointcut-ref="userServiceMethod" method="rollback"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
