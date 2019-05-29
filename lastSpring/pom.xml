@@ -88,6 +88,11 @@
       <artifactId>spring-core</artifactId>
       <version>5.0.8.RELEASE</version>
     </dependency>
+      <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.8.9</version>
+      </dependency>
 
   </dependencies>
 

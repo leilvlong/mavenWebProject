@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-//@Service("userService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
     @Resource(name="userDao")
     private UserDao ud;
@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
         toUser.setPassword("333333");
 
         ud.updateByUser(forUser);
-        //int i = 10 / 0;
         ud.updateByUser(toUser);
 
 

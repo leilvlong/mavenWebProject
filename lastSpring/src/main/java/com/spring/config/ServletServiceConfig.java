@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 import java.lang.reflect.Proxy;
 
-@Configuration
+/*@Configuration
 public class ServletServiceConfig {
 
     @Bean(name="userServiceImpl")
@@ -35,4 +35,4 @@ public class ServletServiceConfig {
                 userServiceHandler
                 );
     }
-}
+}*/
