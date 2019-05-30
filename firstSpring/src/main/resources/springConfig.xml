@@ -4,12 +4,11 @@
        xmlns:C="http://www.springframework.org/schema/c"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                           https://www.springframework.org/schema/beans/spring-beans.xsd
                           http://www.springframework.org/schema/aop
-                          https://www.springframework.org/schema/aop/spring-aop.xsd
-                          ">
+                          https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 <!--    <bean id="userServcie" class="com.spring.service.impl.User" C:name="zhangsan" P:ud-ref="userDao" >
         <property name="age" value="15">
@@ -31,7 +30,7 @@
     <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" C:dataSource-ref="dataSource"/>
 
     <!--事务控制工具-->
-    <bean id="transactionUtil" class="com.spring.util.TransactionUtil" P:dtm-ref="dataSourceTransactionManager"></bean>
+    <!--<bean id="transactionUtil" class="com.spring.util.TransactionUtil" P:dtm-ref="dataSourceTransactionManager"></bean>-->
 
     <!--JdbcTemplate连接-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
@@ -44,13 +43,26 @@
     <!--Service对象-->
     <bean id="userService" class="com.spring.service.impl.UserServiceImpl" P:ud-ref="userDao" ></bean>
 
+    <bean id="outUtil" class="com.spring.util.OutUtil"/>
     <!--为service添加aop事务-->
+    <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
     <aop:config>
-        <aop:aspect id="ProxyUserService" ref="transactionUtil">
-            <aop:pointcut id="userServiceMethod" expression="execution(* com.spring.service.UserService.*(..))"/>
-            <aop:before pointcut-ref="userServiceMethod" method="startAffair"/>
+        <aop:pointcut id="userServiceMethod" expression="execution(* com.spring.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceMethod"/>
+        <!--<aop:aspect id="ProxyUserService" ref="transactionUtil">
+            &lt;!&ndash;<aop:before pointcut-ref="userServiceMethod" method="startAffair"/>
             <aop:after-returning pointcut-ref="userServiceMethod" method="commit"/>
-            <aop:after-throwing pointcut-ref="userServiceMethod" method="rollback"/>
-        </aop:aspect>
+            <aop:after-throwing pointcut-ref="userServiceMethod" method="rollback"/>&ndash;&gt;
+        </aop:aspect>-->
+
     </aop:config>
+
+
+
+
 </beans>
