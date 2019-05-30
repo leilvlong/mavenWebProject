@@ -14,9 +14,7 @@ public class Client {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
         UserService userService1 =  ac.getBean("userService",UserService.class);
-        UserService userService2 =  ac.getBean("userService",UserService.class);
-        System.out.println(userService1.getClass().getName());
-        System.out.println(userService1==userService2);
+
 
         User user1 = new User();
         User user2 = new User();

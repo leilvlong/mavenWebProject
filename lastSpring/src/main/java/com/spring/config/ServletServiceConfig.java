@@ -1,4 +1,4 @@
-package com.spring.config;
+/*package com.spring.config;
 
 
 import com.spring.service.UserService;
@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Proxy;
+import java.lang.reflect.Proxy;*/
 
 /*@Configuration
 public class ServletServiceConfig {

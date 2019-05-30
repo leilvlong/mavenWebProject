@@ -3,14 +3,16 @@ package com.spring.service.impl;
 import com.spring.dao.UserDao;
 import com.spring.domain.User;
 import com.spring.service.UserService;
-import com.spring.util.TransactionUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService {
     @Resource(name="userDao")
@@ -32,11 +34,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(value = "DataSourceTransactionManager")
     public void updateByUser(User forUser, User toUser) {
-        forUser.setPassword("555555");
-        toUser.setPassword("333333");
+        forUser.setPassword("333333");
+        toUser.setPassword("666666");
 
         ud.updateByUser(forUser);
+        int i = 10 / 0;
         ud.updateByUser(toUser);
 
 
