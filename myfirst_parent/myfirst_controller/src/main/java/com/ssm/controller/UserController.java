@@ -58,9 +58,5 @@ public class UserController {
         return "test.jsp";
     }
 
-    @RequestMapping("/test")
-    public String test(){
-        return "test.jsp";
-    }
 
 }
