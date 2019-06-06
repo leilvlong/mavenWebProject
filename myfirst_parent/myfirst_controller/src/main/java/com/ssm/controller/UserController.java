@@ -58,14 +58,13 @@ public class UserController {
         return "test.jsp";
     }
 
-    /**
-     * 合并分治后额内容
-     * @return
-     */
+
+
     @RequestMapping("/test")
     public String test(){
         System.out.println("哈哈哈");
         return "test.jsp";
     }
+
 
 }
