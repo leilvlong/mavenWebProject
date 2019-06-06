@@ -60,6 +60,7 @@ public class UserController {
 
     @RequestMapping("/test")
     public String test(){
+        System.out.println("哈哈哈");
         return "test.jsp";
     }
 
