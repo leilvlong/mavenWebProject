@@ -66,9 +66,6 @@ public class UserController {
         return "test.jsp";
     }
 
-    public static void fun(){
-        System.out.println("??");
-    }
 
     private void tese(){
 
