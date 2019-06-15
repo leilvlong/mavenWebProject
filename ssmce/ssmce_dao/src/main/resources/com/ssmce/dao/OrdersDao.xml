@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmce.dao.OrdersDao">
+    <resultMap id="findOrdersAll" type="com.ssmce.domain.Orders">
+        <id property="id" column="id"/>
+        <result property="orderNum" column="orderNum"/>
+        <result property="orderTime" column="orderTime"/>
+        <result property="peopleCount" column="peopleCount"/>
+        <result property="orderDesc" column="orderDesc"/>
+        <result property="payType" column="payType"/>
+        <result property="orderStatus" column="orderStatus"/>
+        <association property="product" javaType="com.ssmce.domain.Product" column="productId" foreignColumn="id">
+            <id property="id" column="id"/>
+            <result property="productNum" column="productNum"/>
+            <result property="productName" column="productName"/>
+            <result property="cityName" column="cityName"/>
+            <result property="departureTime" column="departureTime"/>
+            <result property="productPrice" column="productPrice"/>
+            <result property="productDesc" column="productDesc"/>
+            <result property="productStatus" column="productStatus"/>
+        </association>
+    </resultMap>
+
+    <select id="ordersAll" resultMap="findOrdersAll">
+        select * from orders,product where orders.productId=product.id
+    </select>
+
+    <select id="productfindAll" resultType="com.ssmce.domain.Product" >
+        select * from product
+    </select>
+
+    <insert id="ordersAdd" parameterType="com.ssmce.domain.Orders">
+        insert into orders values(0,#{orderNum},#{orderTime},#{peopleCount},#{orderDesc},#{payType},#{orderStatus},#{product.id})
+    </insert>
+</mapper>
+
