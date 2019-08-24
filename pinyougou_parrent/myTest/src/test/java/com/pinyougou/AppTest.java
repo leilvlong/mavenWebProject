@@ -66,10 +66,24 @@ public class AppTest {
         workbook.write(os);
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws InvalidFormatException
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     *
+     * poi文件导入对应两种版本
+     * 一种以xls文件后缀结尾
+     * 一种以xlsx文件后缀结尾
+     * 两种对应的API都接收file对象
+     * 不管以哪种结尾,都可以使用try catch方式解决这类问题
+     */
     @Test
     public void importExcel() throws IOException, InvalidFormatException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> type = TbBrand.class;
-        Field[] fields = type.getDeclaredFields();
         Method[] methods = type.getMethods();
         Map<String, Method> methodMap = new HashMap<>();
         for (Method method : methods) {
@@ -79,12 +93,11 @@ public class AppTest {
         }
 
         Workbook workbook;
-
         try {
-            System.out.println("2003");
+            // 默认为是2003版本的;
             workbook = new HSSFWorkbook(POIFSFileSystem.create(new File("F:\\project_java\\mavenProject\\pinyougou_parrent\\myTest\\src\\excel\\text.xlsx")));
         } catch (Exception e) {
-            System.out.println("2007");
+            // 若上述代码出现异常,则对象更改为2007版本的
             workbook = new XSSFWorkbook(new File("F:\\project_java\\mavenProject\\pinyougou_parrent\\myTest\\src\\excel\\text.xlsx"));
         }
         Sheet sheet = workbook.getSheetAt(0);
