@@ -27,7 +27,5 @@ spring:
       use-global-data-source-stat: true
 
   thymeleaf:
-    prefix:
-      classpath: /templates
+    prefix: classpath:/templates/
     cache: false
-

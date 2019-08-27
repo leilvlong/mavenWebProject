@@ -2,6 +2,7 @@ package com.springboot.example.druibandmybatis.controller;
 
 
 import com.springboot.example.druibandmybatis.Dao.UserDao;
+import com.springboot.example.druibandmybatis.pojo.Result;
 import com.springboot.example.druibandmybatis.pojo.User;
 import com.springboot.example.druibandmybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/index")
+@RequestMapping("/test")
 public class TestController {
 
     @Autowired
@@ -30,8 +31,12 @@ public class TestController {
     }
 
     @RequestMapping("/hello")
-    public List<User> AllUser(){
-        return userDao.findAll();
+    public Result AllUser(){
+        Result result = new Result();
+        result.setAmessage("ok");
+        result.setAstatus(2000);
+        result.setData(userDao.findAll());
+        return result;
     }
 
     @RequestMapping("/tran")

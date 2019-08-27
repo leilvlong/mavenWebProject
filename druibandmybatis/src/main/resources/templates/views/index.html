@@ -1,0 +1,34 @@
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商品管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/static/jss/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/jss/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="/static/jss/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/static/jss/css/style.css">
+    <script src="/static/jss/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/static/jss/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div id="app">
+    <h1><a href="/hello">index</a></h1>
+    <button type="button" class="btn btn-default" title="点击" @click='findAll()'><i class="fa fa-ban"></i> 点击</button>
+    <h1>{{amessage}}</h1>
+    <h1>{{astatus}}</h1>
+    <ul v-for="entrty in list">
+        <li>{{entrty.id}} and {{entrty.username}}</li>
+    </ul>
+
+</div>
+</body>
+<script src="/static/jss/plugins/vue/vue.js"></script>
+<script src="/static/jss/plugins/axios/axios.js"></script>
+<script src="/static/jss/js/controller/contentController.js"></script>
+
+</html>
