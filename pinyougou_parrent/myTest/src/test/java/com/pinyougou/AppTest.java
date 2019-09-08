@@ -127,5 +127,23 @@ public class AppTest {
 
     }
 
+    @Test
+    public void filedIsNull() throws IllegalAccessException {
+        TbBrand tbBrand = new TbBrand();
+        tbBrand.setId(1L);
+
+        Field[] fields = TbBrand.class.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            if (field.get(tbBrand) == null){
+                throw new NullPointerException(field.getName()+"属性不能为空");
+            }
+        }
+
+
+
+    }
+
 
 }
