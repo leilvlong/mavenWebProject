@@ -7,13 +7,13 @@ import com.example.demo.parmters.MessageInfo;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+@Component("videoMessageServiceImpl")
 @Message_Type(MessageType.VIDEO)
 public class VideoMessageServiceImpl implements IMessageService {
 
     @Override
     public Boolean operationMessage(MessageInfo messageInfo) {
-        System.out.println(messageInfo.getMessage());
+        System.out.println(messageInfo.getMessage()+" videoMessageServiceImpl");
         return true;
     }
 }

@@ -7,12 +7,12 @@ import com.example.demo.parmters.MessageInfo;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+@Component("textMessageServiceImpl")
 @Message_Type(MessageType.TEXT)
 public class TextMessageServiceImpl implements IMessageService {
     @Override
     public Boolean operationMessage(MessageInfo messageInfo) {
-        System.out.println(messageInfo.getMessage());
+        System.out.println(messageInfo.getMessage()+" textMessageServiceImpl");
         return true;
     }
 }

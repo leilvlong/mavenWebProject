@@ -28,12 +28,16 @@ public class opLogAop {
 
     @Before("opLogAopApi() && @annotation(opLog)")
     public void doBeforeGame( OpLog opLog){
+        System.out.println("OpLog------start------OpLog");
         System.out.println(opLog.value());
         Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(Message_Type.class);
         for (Map.Entry<String, Object> stringObjectEntry : beansWithAnnotation.entrySet()) {
-            System.out.println(stringObjectEntry.getKey());
+            System.out.print(stringObjectEntry.getKey()+":   ");
             System.out.println(stringObjectEntry.getValue());
         }
+        System.out.println("OpLog------end------OpLog");
+        System.out.println();
+
     }
 
 }

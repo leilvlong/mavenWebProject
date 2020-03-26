@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 import javax.websocket.server.ServerEndpoint;
 
-@Component
+@Component("pictureMessageService")
 @Message_Type(MessageType.PICTURE)
 public class PictureMessageServiceImpl implements IMessageService {
 
     @Override
     public Boolean operationMessage(MessageInfo messageInfo) {
-        System.out.println(messageInfo.getMessage());
+        System.out.println(messageInfo.getMessage()+" pictureMessageService");
         return true;
     }
 }

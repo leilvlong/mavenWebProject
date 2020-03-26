@@ -16,7 +16,6 @@ public class MessageInfoListener implements ApplicationListener<ContextRefreshed
         Map<String, Object> beansWithAnnotation = contextRefreshedEvent.getApplicationContext().getBeansWithAnnotation(Message_Type.class);
         MessageInfoServiceContext messageInfoServiceContext = contextRefreshedEvent.getApplicationContext().getBean(MessageInfoServiceContext.class);
         beansWithAnnotation.forEach((key,value)->{
-            System.out.println(key);
             MessageType messageType = value.getClass().getAnnotation(Message_Type.class).value();
             messageInfoServiceContext.setMessageServiceInfo(messageType.getType(), (IMessageService) value);
         });
