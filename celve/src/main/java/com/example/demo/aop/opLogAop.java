@@ -27,7 +27,7 @@ public class opLogAop {
     private ApplicationContext applicationContext;
 
     @Before("opLogAopApi() && @annotation(opLog)")
-    public void doBeforeGame( OpLog opLog){
+    public void doBefore( OpLog opLog){
         System.out.println("OpLog------start------OpLog");
         System.out.println(opLog.value());
         Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(Message_Type.class);

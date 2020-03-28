@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.annotations.OpLog;
+import com.example.demo.annotations.ValiDator;
 import com.example.demo.components.MessageInfoServiceContext;
 import com.example.demo.dservice.IMessageService;
 import com.example.demo.parmters.MessageInfo;
+import com.example.demo.responses.ErrorMsssage;
 import com.example.demo.responses.TypeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,4 +30,9 @@ public class TestTypeController {
         return new TypeResponse(200,"OK");
     }
 
+    @PostMapping("/validator")
+    public TypeResponse validator(@RequestBody MessageInfo messageInfo, ErrorMsssage errorMsssage){
+
+        return new TypeResponse(200,errorMsssage.getErrorMessage());
+    }
 }
