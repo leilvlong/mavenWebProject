@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text = #{language.hi}></h1>
+    <a href="" onclick="change('en_us')" th:text = #{language.en}></a>
+    <a href=""onclick="change('zh_cn')" th:text = #{language.zh}></a>
+    <a href=""onclick="change('hw_hw')" th:text = #{language.hw}></a>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script>
+    function change(lang) {
+        $.ajax({
+            type:"post",
+            url:"changeLang",
+            data:{
+                lang:lang
+            },
+            success:function (data) {
+                location.reload()
+            },
+            error:function (data) {
+                alert(data)
+            }
+
+        })
+    }
+
+
+</script>
+</html>

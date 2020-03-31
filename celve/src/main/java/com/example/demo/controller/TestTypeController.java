@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 策略模式以及aop+注解验证参数
+ */
+
 @RestController
 @RequestMapping("/test")
 public class TestTypeController {
