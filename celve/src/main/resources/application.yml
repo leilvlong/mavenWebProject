@@ -6,4 +6,4 @@ spring:
     encoding: UTF-8
     cache: false
   messages:
-    basename: static/message/message_zh_CN
+    basename: static/message/message
