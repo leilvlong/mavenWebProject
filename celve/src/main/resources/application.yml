@@ -7,3 +7,11 @@ spring:
     cache: false
   messages:
     basename: static/message/message
+  mail:
+    host: smtp.163.com
+    username: leilvlong@163.com
+    password: ITTMJXQIFGXXBWQN
+
+
+
+
