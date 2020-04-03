@@ -9,6 +9,7 @@ public class User implements Serializable {
     private Integer age;
     private String email;
     private String sex;
+    private User user;
 
     public User() {
     }
@@ -68,5 +69,13 @@ public class User implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

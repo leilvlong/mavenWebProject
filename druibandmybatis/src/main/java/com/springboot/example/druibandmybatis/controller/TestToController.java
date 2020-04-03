@@ -1,6 +1,7 @@
 package com.springboot.example.druibandmybatis.controller;
 
 import com.springboot.example.druibandmybatis.Dao.TextResource;
+import com.springboot.example.druibandmybatis.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import java.util.Locale;
 public class TestToController {
 
     @Autowired
-    TextResource userDao;
+    UserService userService;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -36,7 +37,15 @@ public class TestToController {
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, LocaleContextHolder.getLocale());
         }
         return "ok";
-
     }
+
+    @RequestMapping("/query")
+    @ResponseBody
+    public User query(Long age){
+
+
+        return userService.findAllUser(age);
+    }
+
 
 }

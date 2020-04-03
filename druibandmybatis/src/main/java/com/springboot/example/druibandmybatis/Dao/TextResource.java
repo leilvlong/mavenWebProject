@@ -20,5 +20,5 @@ public interface TextResource {
     @Insert("insert into user values(0,#{username},#{password},#{age},#{email},#{sex})")
     void insetrUser(User user);
 
-    List<Map> getAll(String tableName);
+    User findAllUser(Long age);
 }
