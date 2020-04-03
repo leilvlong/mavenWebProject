@@ -16,4 +16,9 @@
         select * from user where age=#{age}
     </select>
 
+    <select id="findListUser" resultType="com.springboot.example.druibandmybatis.pojo.ListUser">
+        select * from user where age=#{age}
+    </select>
+
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.springboot.example.druibandmybatis.Dao;
 
 import com.springboot.example.druibandmybatis.pojo.I18n;
+import com.springboot.example.druibandmybatis.pojo.ListUser;
 import com.springboot.example.druibandmybatis.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,4 +22,6 @@ public interface TextResource {
     void insetrUser(User user);
 
     User findAllUser(Long age);
+
+    List<ListUser> findListUser(Long age);
 }

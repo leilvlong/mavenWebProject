@@ -1,6 +1,7 @@
 package com.springboot.example.druibandmybatis.controller;
 
 import com.springboot.example.druibandmybatis.Dao.TextResource;
+import com.springboot.example.druibandmybatis.pojo.ListUser;
 import com.springboot.example.druibandmybatis.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Locale;
 
 @Controller
@@ -39,12 +41,16 @@ public class TestToController {
         return "ok";
     }
 
-    @RequestMapping("/query")
+    @RequestMapping("/queryOneToOne")
     @ResponseBody
-    public User query(Long age){
-
-
+    public User queryOneToOne(Long age){
         return userService.findAllUser(age);
+    }
+
+    @RequestMapping("/queryOneToMan")
+    @ResponseBody
+    public List<ListUser> query(Long age){
+        return userService.findListUser(age);
     }
 
 
