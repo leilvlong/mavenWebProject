@@ -25,6 +25,11 @@ public class Testi18nController {
         return "views/index";
     }
 
+    @RequestMapping("/vue")
+    public String vue(){
+        return "views/vue";
+    }
+
     @RequestMapping("/changeLang")
     @ResponseBody
     public String changeLang(String lang, HttpServletRequest request){

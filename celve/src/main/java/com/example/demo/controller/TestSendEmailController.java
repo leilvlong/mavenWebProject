@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.responses.Response;
 import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -47,6 +48,11 @@ public class TestSendEmailController {
         helper.setText(process,true);
         javaMailSender.send(mimeMessage);
         return "ok";
+    }
+
+    @RequestMapping("/info")
+    public Response info(){
+        return new Response(200,"hello world");
     }
 
 }

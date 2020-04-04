@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-on:click="getInfo()">please</p>
+    <p>{{info}} with vue</p>
+    <input type="text" v-model="firstname" @keyup="getFullname"> +
+    <input type="text" v-model="lastname" @keyup="getFullname"> =
+    <input type="text" v-model="fullname">
+
+
+</div>
+</body>
+<script type = "text/javascript">
+    // 添加请求拦截器
+    axios.interceptors.request.use(function (config) {
+        alert("request");
+        return config;
+    }, function (error) {
+        // 对请求错误做些什么
+        return Promise.reject(error);
+    });
+
+    // 添加响应拦截器
+    axios.interceptors.response.use(function (response) {
+        alert("response");
+        return response;
+    }, function (error) {
+        // 对响应错误做点什么
+        return Promise.reject(error);
+    });
+
+    vm = new Vue({
+        el: '#app',
+        data () {
+            return {
+                info:'',
+                firstname:'',
+                lastname:'',
+                fullname:''
+            }
+        },
+        methods:{
+            getInfo:function () {
+                axios.get("/send/info").then(function (data) {
+                    vm.info = data.data.message;
+                    alert(vm.info)
+                }).catch(function (error) {
+                    alert(error)
+                })
+
+            },
+
+            getFullname() {
+                vm.fullname = vm.firstname + '-' + vm.lastname
+            }
+        }
+
+    })
+</script>
+</html>

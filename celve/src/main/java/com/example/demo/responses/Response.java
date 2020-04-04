@@ -2,16 +2,16 @@ package com.example.demo.responses;
 
 import java.io.Serializable;
 
-public class TypeResponse implements Serializable {
+public class Response implements Serializable {
 
     private Integer status;
 
     private Object message;
 
-    public TypeResponse() {
+    public Response() {
     }
 
-    public TypeResponse(Integer status, Object message) {
+    public Response(Integer status, Object message) {
         this.status = status;
         this.message = message;
     }
