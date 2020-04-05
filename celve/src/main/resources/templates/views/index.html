@@ -9,9 +9,10 @@
     <a href="" onclick="change('en_us')" th:text = #{language.en}></a>
     <a href=""onclick="change('zh_cn')" th:text = #{language.zh}></a>
     <a href=""onclick="change('hw_hw')" th:text = #{language.hw}></a>
+    <a href=""onclick="change('def')" >无</a>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="../../static/jquery/jquery.min.js"></script>
 <script>
     function change(lang) {
         $.ajax({
