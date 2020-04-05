@@ -21,8 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @功能说明：自定义Message类
- * @创建人员：Chase Wang
- * @变更记录： 1、2018年09月26日 Chase Wang Create
+ * @创建日期： 2018年09月26日
  */
 @Component("messageResource")
 public class MessageResource extends ResourceBundleMessageSource implements ResourceLoaderAware, InitializingBean {
