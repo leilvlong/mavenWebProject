@@ -36,18 +36,14 @@ public class Testi18nController {
         if ("zh_cn".equals(lang)){
             Locale locale = new Locale("zh","CN");
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale);
-            request.getSession().setAttribute("lan","zh_CN");
         }else if("en_us".equals(lang)){
             Locale locale = new Locale("en","US");
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale);
-            request.getSession().setAttribute("lan","en_US");
         }else if("hw_hw".equals(lang)){
             Locale locale = new Locale("hw","HW");
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale);
-            request.getSession().setAttribute("lan","hw_HW");
         } else{
             request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, LocaleContextHolder.getLocale());
-            request.getSession().setAttribute("lan","zh_CN");
         }
         return "ok";
     }

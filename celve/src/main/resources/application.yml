@@ -11,7 +11,8 @@ spring:
     host: smtp.163.com
     username: leilvlong@163.com
     password: ITTMJXQIFGXXBWQN
-
+  mvc:
+    static-path-pattern: /static/**
 
 
 
