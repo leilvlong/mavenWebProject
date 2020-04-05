@@ -1,8 +1,8 @@
 package com.springboot.example.druibandmybatis.controller;
 
-import com.springboot.example.druibandmybatis.Dao.TextResource;
 import com.springboot.example.druibandmybatis.pojo.ListUser;
 import com.springboot.example.druibandmybatis.pojo.User;
+import com.springboot.example.druibandmybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;

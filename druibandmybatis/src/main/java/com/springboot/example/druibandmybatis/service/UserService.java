@@ -1,4 +1,4 @@
-package com.springboot.example.druibandmybatis.controller;
+package com.springboot.example.druibandmybatis.service;
 
 import com.springboot.example.druibandmybatis.Dao.TextResource;
 import com.springboot.example.druibandmybatis.pojo.ListUser;
