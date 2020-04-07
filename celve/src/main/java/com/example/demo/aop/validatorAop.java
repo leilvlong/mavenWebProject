@@ -51,7 +51,10 @@ public class validatorAop {
                 }
             }
         }
-        errorMsssage.setErrorMessage(message.toString());
+        if (errorMsssage != null){
+            errorMsssage.setErrorMessage(message.toString());
+        }
+
     }
 
 

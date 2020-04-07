@@ -12,7 +12,11 @@ public class MessageInfoServiceContext {
     private final Map<Integer, IMessageService> messageServiceInfoMap = new HashMap<>();
 
     public IMessageService getMessageService(Integer type){
-        return messageServiceInfoMap.get(type);
+        IMessageService iMessageService = messageServiceInfoMap.get(type);
+        if (iMessageService == null){
+            throw new NullPointerException("There is no such message type");
+        }
+        return iMessageService;
     }
 
     public void setMessageServiceInfo(Integer type, IMessageService messageService){
