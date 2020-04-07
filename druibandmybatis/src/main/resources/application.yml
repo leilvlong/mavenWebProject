@@ -3,12 +3,12 @@ name:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/javaweb_exam?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: Lei749581
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
     druid:
+      url: jdbc:mysql://127.0.0.1:3306/javaweb_exam?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: Lei749581
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
       initial-size: 8
       min-idle: 1
       max-active: 20
