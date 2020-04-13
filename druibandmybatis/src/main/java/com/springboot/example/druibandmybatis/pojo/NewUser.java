@@ -1,27 +1,24 @@
 package com.springboot.example.druibandmybatis.pojo;
 
+import com.alibaba.druid.support.json.JSONUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.persistence.Table;
+import java.io.IOException;
 import java.io.Serializable;
 
-public class User implements Serializable {
+@Table(name = "user")
+public class NewUser implements Serializable {
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     private Long id;
     private String username;
     private String password;
     private Integer age;
     private String email;
     private String sex;
-    private User user;
-
-    public User() {
-    }
-
-    public User(Long id, String username, String password, Integer age, String email, String sex) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.age = age;
-        this.email = email;
-        this.sex = sex;
-    }
 
     public Long getId() {
         return id;
@@ -64,31 +61,12 @@ public class User implements Serializable {
     }
 
     public String getSex() {
-        return sex;
+        return this.sex;
     }
 
     public void setSex(String sex) {
         this.sex = sex;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", sex='" + sex + '\'' +
-                ", user=" + user +
-                '}';
-    }
 }

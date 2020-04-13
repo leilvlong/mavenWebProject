@@ -1,12 +1,16 @@
 package com.springboot.example.druibandmybatis.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.example.druibandmybatis.pojo.ListUser;
+import com.springboot.example.druibandmybatis.pojo.NewUser;
 import com.springboot.example.druibandmybatis.pojo.User;
 import com.springboot.example.druibandmybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -52,6 +56,28 @@ public class TestToController {
     public List<ListUser> query(Long age){
         return userService.findListUser(age);
     }
+
+    @RequestMapping("/user")
+    @ResponseBody
+    public String user() throws JsonProcessingException {
+        NewUser newUser = new NewUser();
+        newUser.setUsername("new");
+        newUser.setPassword("123");
+        newUser.setAge(1);
+        newUser.setEmail("123@456");
+
+        User user = new User();
+        user.setId(1L);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String value = objectMapper.writeValueAsString(user);
+
+        newUser.setSex(value);
+
+        userService.insertUser(newUser);
+        return "ok";
+    }
+
 
 
 }
