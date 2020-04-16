@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 策略模式以及aop+注解验证参数
+ * 一个接口多个实现的注入
  */
 
 @RestController
@@ -36,5 +37,22 @@ public class TestTypeController {
     public Response validator(@RequestBody MessageInfo messageInfo, ErrorMsssage errorMsssage){
 
         return new Response(200,errorMsssage.getErrorMessage());
+    }
+
+    @Autowired
+    private IMessageService pictureMessageService;
+
+    @Autowired
+    private IMessageService textMessageServiceImpl;
+
+    @Autowired
+    private IMessageService videoMessageServiceImpl;
+
+    @RequestMapping("/message")
+    public String testMessageType(@RequestBody MessageInfo messageInfo){
+        pictureMessageService.operationMessage(messageInfo);
+        textMessageServiceImpl.operationMessage(messageInfo);
+        videoMessageServiceImpl.operationMessage(messageInfo);
+        return "OK";
     }
 }

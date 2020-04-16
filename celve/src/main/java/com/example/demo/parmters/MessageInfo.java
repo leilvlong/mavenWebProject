@@ -1,8 +1,11 @@
 package com.example.demo.parmters;
 
 import com.example.demo.annotations.Max;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class MessageInfo implements Serializable {
 
@@ -10,6 +13,9 @@ public class MessageInfo implements Serializable {
     private Integer messageType;
 
     private String message;
+
+    @JsonFormat(pattern = "yyyy/MM/dd")
+    private Date date;
 
     public Integer getMessageType() {
         return messageType;
@@ -25,6 +31,14 @@ public class MessageInfo implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
