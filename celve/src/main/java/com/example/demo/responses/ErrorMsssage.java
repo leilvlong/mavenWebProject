@@ -3,22 +3,24 @@ package com.example.demo.responses;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ErrorMsssage implements Serializable {
-    private String errorMessage;
+    private  List<String> errorMessage;
 
 
 
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(List<String> errorMessage) {
         this.errorMessage = errorMessage;
     }
 
     public boolean hasErrorMessage(){
-        return !StringUtils.isEmpty(errorMessage);
+        return !errorMessage.isEmpty();
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public List<String> getErrorMessage() {
+        return this.errorMessage;
     }
 
     @Override

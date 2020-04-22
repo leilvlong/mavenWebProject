@@ -7,4 +7,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Max {
     int value();
+
+    boolean requisite() default true;
 }

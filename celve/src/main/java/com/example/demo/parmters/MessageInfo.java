@@ -12,6 +12,7 @@ public class MessageInfo implements Serializable {
     @Max(7)
     private Integer messageType;
 
+    @Max(value = 10,requisite = false)
     private String message;
 
     @JsonFormat(pattern = "yyyy/MM/dd")

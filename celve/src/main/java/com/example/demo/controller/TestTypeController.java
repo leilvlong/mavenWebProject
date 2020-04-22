@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.annotations.OpLog;
+import com.example.demo.annotations.ValiDator;
 import com.example.demo.components.MessageInfoServiceContext;
 import com.example.demo.dservice.IMessageService;
+import com.example.demo.enums.MessageType;
 import com.example.demo.parmters.MessageInfo;
 import com.example.demo.responses.ErrorMsssage;
 import com.example.demo.responses.Response;
+import org.hibernate.validator.internal.xml.binding.ParameterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Parameter;
 
 /**
  * 策略模式以及aop+注解验证参数
@@ -34,9 +39,10 @@ public class TestTypeController {
     }
 
     @PostMapping("/validator")
-    public Response validator(@RequestBody MessageInfo messageInfo, ErrorMsssage errorMsssage){
+    @OpLog("validator opLog")
+    public Response validator( ErrorMsssage errorMsssage,String name, @RequestBody @ValiDator MessageInfo messageInfo){
 
-        return new Response(200,errorMsssage.getErrorMessage());
+        return new Response(200,"ok");
     }
 
     @Autowired
