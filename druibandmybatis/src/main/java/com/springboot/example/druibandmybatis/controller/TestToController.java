@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -78,6 +79,12 @@ public class TestToController {
         return "ok";
     }
 
+    @RequestMapping("/affair")
+    @ResponseBody
+    public String affair() throws  SQLException {
+        userService.testAffairManage();
+        return "ok";
+    }
 
 
 }
