@@ -24,8 +24,6 @@ public class RedisLock {
 
     private String redisLockPrefix;
 
-    private Long redisLockTimeout;
-
     @Autowired
     RedisTemplate redisTemplate;
 
@@ -53,10 +51,22 @@ public class RedisLock {
                 return jedis.set(redisLockPrefix+"_"+ key, uuid, "NX", "PX", expire);
             };
             String result = (String) redisTemplate.execute(callback);
-
             return !StringUtils.isEmpty(result);
         } catch (Exception e) {
             logger.error("set redis occured an exception", e);
+        }
+        return false;
+    }
+
+    public boolean tryLock(String key, long expire){
+
+        long l = System.currentTimeMillis() + expire;
+
+        while (l>System.currentTimeMillis()){
+            boolean b = setLock(key, expire);
+            if (b){
+                return b;
+            }
         }
         return false;
     }
@@ -119,11 +129,4 @@ public class RedisLock {
         this.redisLockPrefix = redisLockPrefix;
     }
 
-    public Long getRedisLockTimeout() {
-        return redisLockTimeout;
-    }
-
-    public void setRedisLockTimeout(Long redisLockTimeout) {
-        this.redisLockTimeout = redisLockTimeout;
-    }
 }
