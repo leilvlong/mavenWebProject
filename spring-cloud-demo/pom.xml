@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>eurekaserver</module>
         <module>eureka</module>
         <module>client</module>
         <module>TestClient</module>
         <module>common</module>
+        <module>TestZuul</module>
     </modules>
 
     <parent>
@@ -63,14 +63,4 @@
             </exclusions>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

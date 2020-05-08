@@ -5,6 +5,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+/**
+ * 分布式服务调用
+ */
+
 @FeignClient(value = "indexClient", fallback = IndexClient.IndexClientFallback.class)
 public interface IndexClient {
 

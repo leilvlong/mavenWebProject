@@ -11,7 +11,7 @@ public class IndexController {
 
     @RequestMapping("/index/client")
     public Response index(){
-        throw new RuntimeException();
-        //return new Response("index client ok", 200);
+        //throw new RuntimeException();
+        return new Response("index client ok", 200);
     }
 }
