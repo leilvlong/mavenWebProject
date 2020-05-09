@@ -1,0 +1,23 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/leilvlong/cloudconfig #配置git仓库地址
+          searchPaths: cloud/config #配置仓库路径
+#          username: leilvlong #访问git仓库的用户名
+#          password: ENC(x8+lLvWdSBZnD35dP3uY1oyxr9Rp8NU/) #访问git仓库的用户密码
+      label: master #配置仓库的分支
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    instanceId: 127.0.0.1:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
