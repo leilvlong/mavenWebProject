@@ -20,10 +20,6 @@ public class TEST {
 
     @Test
     public void test(){
-        //x8+lLvWdSBZnD35dP3uY1oyxr9Rp8NU/
-        String password = "Lei749581";
-        String encryptPwd = encrypt.encrypt(password);
-        System.out.println("加密:：" + encryptPwd);
-        System.out.println("解密：" + encrypt.decrypt(encryptPwd));
+
     }
 }
