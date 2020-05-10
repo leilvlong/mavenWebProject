@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class ConfigClentController {
 
-    @Value("${word}")
-    private String world;
+
 
     @Value("pass")
     private String pass;
 
     @RequestMapping("/configclent")
     public Response configClent(){
-        return new Response(world + ": " + pass,200);
+        return new Response( pass,200);
     }
 }
