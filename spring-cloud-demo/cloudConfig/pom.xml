@@ -28,5 +28,11 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.springboot.cloud.demo</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 </project>

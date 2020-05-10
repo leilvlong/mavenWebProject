@@ -21,3 +21,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+pass: '{cipher}AQBCu6K+VovoCveKQM7Bv4btgS4Ukrr3wzxgUIOefTAN1mxBk9ulPPd9g5yNuovJ8tLA3UeuE6dCRPmtDJFItQ3taR71GjXpFk2VrDGlsvDFink2xVDklKZ3JW6z3ODd3tDDMlMxlB3P0rfVS3sD8xFkEZVJMnG+H0WJCwafJrAZLDwKEFFptxCYB9dWnxkebhJhzuvYNdVDSdUgxKd2ZAxgm9PP+sbKTLe3KRBIQ1Bxs0QQrbPNasd68rvXixTZ0wRFaZ/aWr01YpVz26xkFcLvx6fxR1+6w9osmnodYDa3O0+6orMFp51HzKEvH0jS17zt0dihuSgXD+xMrPcDfJullclE7TtuAgdk+VWecimyKgmp4mod4PF9Yd2iUSXXVVA='
